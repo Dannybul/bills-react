@@ -51,7 +51,7 @@ export default class App extends React.Component {
             Learn React
           </a>
         </header>
-        <Bills hi={this.hi} />
+        <Bills />
         <PersonalInfo />
       </div>
     );
