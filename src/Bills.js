@@ -13,23 +13,25 @@ import Bill from "./Bill";
 // }
 
 const Bills = (props) => {
-  const allBills = props.billsArray;
-
-  if (allBills !== 0) {
-    console.log(allBills);
-    for (let i = 0; i < allBills.length; i++) {
-      console.log(allBills[i].bill_id);
-      //Need to figure out how to Send stuf to Bill
-    }
+  const billsArray = props.billsArray;
+  console.log("billsarray");
+  if (billsArray !== undefined) {
+    //console.log("in bills " + props.billsArray);
+    return (
+      <div>
+        {billsArray.map((b) => {
+          return <Bill info={b} key={b.bill_id} />;
+        })}
+        <h1>Bills</h1>
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <h1>Bills</h1>
+      </div>
+    );
   }
-
-  return (
-    <div>
-      <h1>Bills</h1>
-      <Bill />
-
-    </div>
-  );
 };
 
 export default Bills;

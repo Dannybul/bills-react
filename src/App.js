@@ -1,7 +1,6 @@
 import React from "react";
 import logo from "./logo.svg";
 import Bills from "./Bills";
-import Bill from "./Bill";
 
 import "./App.css";
 import PersonalInfo from "./PersonalInfo";
@@ -14,7 +13,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      bills: 0,
+      bills: [],
     };
   }
 
@@ -34,7 +33,7 @@ export default class App extends React.Component {
       let billsResult = await json.results[0].bills;
       //Should I validate all data works?
       //Are there security risks
-      this.setState({
+      await this.setState({
         bills: billsResult,
       });
     } catch {
@@ -67,7 +66,6 @@ export default class App extends React.Component {
           </a>
         </header>
         <Bills billsArray={this.state.bills} />
-        <Bill />
         <PersonalInfo />
       </div>
     );
