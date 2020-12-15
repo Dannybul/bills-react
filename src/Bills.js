@@ -19,16 +19,19 @@ const Bills = (props) => {
     //console.log("in bills " + props.billsArray);
     return (
       <div>
-        {billsArray.map((b) => {
-          return <Bill info={b} key={b.bill_id} />;
-        })}
+        <ul>
+          {billsArray.map((b) => {
+            return <Bill info={b} key={b.bill_id} />;
+          })}
+        </ul>
+        
         <h1>Bills</h1>
       </div>
     );
   } else {
     return (
       <div>
-        <h1>Bills</h1>
+        
       </div>
     );
   }
