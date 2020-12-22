@@ -1,6 +1,8 @@
 import React from "react";
 import logo from "./logo.svg";
 import Bills from "./Bills";
+import Nav from "./Nav";
+import About from "./About";
 
 import "./App.css";
 import PersonalInfo from "./PersonalInfo";
@@ -51,6 +53,8 @@ export default class App extends React.Component {
   render() {
     return (
       <div className="App">
+        <Nav />
+        <About />
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
