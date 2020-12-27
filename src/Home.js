@@ -1,15 +1,5 @@
 import React from "react";
-//Functional Component
-// const Home = () => {
-//   return (
-//     <div>
-//       <h3>Home</h3>
-//       <small>Main Page</small>
-//     </div>
-//   );
-// };
 
-// export default Home;
 
 import logo from "./logo.svg";
 import Bills from "./Bills";
@@ -18,7 +8,7 @@ import "./App.css";
 import PersonalInfo from "./PersonalInfo";
 
 const url =
-  "https://api.propublica.org/congress/v1/116/house/bills/introduced.json";
+"https://api.propublica.org/congress/v1/bills/subjects/meat.json"
 let json = {};
 export default class Home extends React.Component {
   //make state with bills
@@ -64,7 +54,6 @@ export default class Home extends React.Component {
     return (
       <div id = "home">
         <Bills billsArray={this.state.bills} />
-        <p> in home</p>
       </div>
     );
   }
