@@ -2,7 +2,6 @@ import React from "react";
 import logo from "./logo.svg";
 import Bills from "./Bills";
 import Nav from "./Nav";
-import About from "./About";
 
 import "./App.css";
 import PersonalInfo from "./PersonalInfo";
@@ -54,23 +53,6 @@ export default class App extends React.Component {
     return (
       <div className="App">
         <Nav />
-        <About />
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-        <Bills billsArray={this.state.bills} />
-        <PersonalInfo />
       </div>
     );
   }

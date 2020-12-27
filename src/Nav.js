@@ -26,13 +26,6 @@ export default class Nav extends React.Component {
     return (
       <div>
         <Router>
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/Categories" component={Categories} />
-            <Route exact path="/About" component={About} />
-            <Route exact path="/PageNotFound" component={PageNotFound} />
-            <Redirect to="/PageNotFound" />
-          </Switch>
           <ul>
             <li>
               <Link to="/"> Home </Link>
@@ -44,6 +37,14 @@ export default class Nav extends React.Component {
               <Link to="About">About</Link>
             </li>
           </ul>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/Categories" component={Categories} />
+            <Route exact path="/About" component={About} />
+            <Route exact path="/PageNotFound" component={PageNotFound} />
+            <Redirect exact from="./" component={Home} />
+            <Redirect to="/PageNotFound" />
+          </Switch>
         </Router>
       </div>
     );

@@ -14,7 +14,6 @@ import Bill from "./Bill";
 
 const Bills = (props) => {
   const billsArray = props.billsArray;
-  console.log("billsarray");
   if (billsArray !== undefined) {
     //console.log("in bills " + props.billsArray);
     return (
@@ -25,7 +24,6 @@ const Bills = (props) => {
           })}
         </ul>
         
-        <h1>Bills</h1>
       </div>
     );
   } else {
