@@ -1,14 +1,12 @@
 import React from "react";
 
-
 import logo from "./logo.svg";
 import Bills from "./Bills";
 
 import "./App.css";
 import PersonalInfo from "./PersonalInfo";
 
-const url =
-"https://api.propublica.org/congress/v1/bills/subjects/meat.json"
+const url = "https://api.propublica.org/congress/v1/116/house/bills/introduced.json"
 let json = {};
 export default class Home extends React.Component {
   //make state with bills
@@ -38,7 +36,9 @@ export default class Home extends React.Component {
       await this.setState({
         bills: billsResult,
       });
-    } catch {
+    } catch (error) {
+      //May want to send bugs to a remote server with error codes
+      console.log(error);
       alert("Error: Could not get bill data");
     }
 
@@ -47,12 +47,12 @@ export default class Home extends React.Component {
   }
 
   componentDidUpdate() {
-    console.log("updated state");
+    console.log("updated state" + this.state.bills);
   }
 
   render() {
     return (
-      <div id = "home">
+      <div id="home">
         <Bills billsArray={this.state.bills} />
       </div>
     );

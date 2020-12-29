@@ -4,8 +4,6 @@ const style = {
   color: "green",
 };
 const Bill = (props) => {
-  console.log(props.info);
-
   return <li style={style}>{props.info.title}</li>;
 };
 

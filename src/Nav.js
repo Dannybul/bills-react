@@ -42,7 +42,7 @@ export default class Nav extends React.Component {
             <Route exact path="/Categories" component={Categories} />
             <Route exact path="/About" component={About} />
             <Route exact path="/PageNotFound" component={PageNotFound} />
-            <Redirect exact from="./" component={Home} />
+            <Redirect exact from="./" to = "/Home" component={Home} />
             <Redirect to="/PageNotFound" />
           </Switch>
         </Router>
