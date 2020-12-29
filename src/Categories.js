@@ -1,8 +1,7 @@
 import React from "react";
 
-const json = {};
-const url =   "https://api.propublica.org/congress/v1/116/house/bills/introduced.json";
-
+const url =
+  "https://api.propublica.org/congress/v1/116/house/bills/introduced.json";
 
 export default class Categories extends React.Component {
   constructor(props) {
@@ -16,6 +15,11 @@ export default class Categories extends React.Component {
     this.callApi(url);
   }
 
+  componentDidUpdate() {
+    console.log("categories updated");
+    console.log(this.state.bills);
+  }
+
   async callApi(apiUrl) {
     try {
       let response = await fetch(apiUrl, {
@@ -24,7 +28,8 @@ export default class Categories extends React.Component {
           "X-API-Key": "ewzo1NlgyHsISCfzkgVniHyLBCvN4JtjpXWsDKks",
         },
       });
-      json = await response.json();
+      let json = await response.json();
+      await console.log(json);
       let billsResult = await json.results[0].bills;
       //Should I validate all data works?
       //Are there security risks
