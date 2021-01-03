@@ -18,6 +18,31 @@ export default class Nav extends React.Component {
     super(props);
   }
 
+  async callApi(apiUrl) {
+    let json = {};
+    try {
+      let response = await fetch(apiUrl, {
+        method: "GET",
+        headers: {
+          "X-API-Key": "ewzo1NlgyHsISCfzkgVniHyLBCvN4JtjpXWsDKks",
+        },
+      });
+      json = await response.json();
+      await this.setState((state, props) => ({
+        bills: json,
+      }));
+    } catch (error) {
+      //May want to send bugs to a remote server with error codes
+      console.log(error);
+      alert("Error: Could not get bill data");
+    }
+
+    return json;
+
+    //parse for errors
+    //update state with await function
+  }
+
   componentDidMount() {}
 
   componentDidUpdate() {}
@@ -38,11 +63,15 @@ export default class Nav extends React.Component {
             </li>
           </ul>
           <Switch>
-            <Route exact path="/" component={Home} />
+            <Route
+              exact
+              path="/"
+              component={() => <Home apiCall={this.callApi} />}
+            />
             <Route exact path="/Categories" component={Categories} />
             <Route exact path="/About" component={About} />
             <Route exact path="/PageNotFound" component={PageNotFound} />
-            <Redirect exact from="./" to = "/Home" component={Home} />
+            <Redirect exact from="./" to="/Home" component={Home} />
             <Redirect to="/PageNotFound" />
           </Switch>
         </Router>

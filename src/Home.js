@@ -6,44 +6,44 @@ import Bills from "./Bills";
 import "./App.css";
 import PersonalInfo from "./PersonalInfo";
 
-const url = "https://api.propublica.org/congress/v1/116/house/bills/introduced.json"
-let json = {};
+const url =
+  "https://api.propublica.org/congress/v1/116/house/bills/introduced.json";
 export default class Home extends React.Component {
   //make state with bills
-  constructor(props) {
+
+  constructor(props, context) {
     super(props);
     this.state = {
       bills: [],
     };
+    console.log("in props");
+    console.log(props);
+
+    props.apiCall = props.apiCall.bind(this);
+  }
+
+  apiCall() {
+    this.props.apiCall();
   }
 
   componentDidMount() {
-    this.callApi(url);
+    this.props.apiCall(url);
   }
 
-  async callApi(apiUrl) {
+  parseAndUpdateData(response) {
     try {
-      let response = await fetch(apiUrl, {
-        method: "GET",
-        headers: {
-          "X-API-Key": "ewzo1NlgyHsISCfzkgVniHyLBCvN4JtjpXWsDKks",
-        },
-      });
-      json = await response.json();
-      let billsResult = await json.results[0].bills;
-      //Should I validate all data works?
-      //Are there security risks
-      await this.setState({
+      console.log(response);
+      let billsResult = response.results[0].bills;
+      console.log(response.copyright);
+
+      this.setState({
         bills: billsResult,
       });
     } catch (error) {
-      //May want to send bugs to a remote server with error codes
       console.log(error);
-      alert("Error: Could not get bill data");
     }
-
-    //parse for errors
-    //update state with await function
+    //Should I validate all data works?
+    //Are there security risks
   }
 
   componentDidUpdate() {
