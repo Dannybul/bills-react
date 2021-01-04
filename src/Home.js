@@ -1,12 +1,11 @@
 import React from "react";
 
-import logo from "./logo.svg";
 import Bills from "./Bills";
 
 import "./App.css";
-import PersonalInfo from "./PersonalInfo";
 
-const url = "https://api.propublica.org/congress/v1/116/house/bills/introduced.json"
+const url =
+  "https://api.propublica.org/congress/v1/116/house/bills/introduced.json";
 let json = {};
 export default class Home extends React.Component {
   //make state with bills
@@ -46,9 +45,7 @@ export default class Home extends React.Component {
     //update state with await function
   }
 
-  componentDidUpdate() {
-    console.log("updated state" + this.state.bills);
-  }
+  componentDidUpdate() {}
 
   render() {
     return (

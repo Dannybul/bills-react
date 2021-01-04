@@ -15,7 +15,6 @@ import Bill from "./Bill";
 const Bills = (props) => {
   const billsArray = props.billsArray;
   if (billsArray !== undefined) {
-    console.log("in bills " + props.billsArray);
     return (
       <div>
         <ul>

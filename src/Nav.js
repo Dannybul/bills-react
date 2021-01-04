@@ -4,20 +4,14 @@ import {
   Switch,
   Route,
   Link,
-  useRouteMatch,
-  useParams,
   Redirect,
 } from "react-router-dom";
-import Categories from "./Categories";
+import Categories from "./Categories/Categories";
 import Home from "./Home";
 import About from "./About";
 import PageNotFound from "./PageNotFound";
 
 export default class Nav extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {}
 
   componentDidUpdate() {}
@@ -42,7 +36,7 @@ export default class Nav extends React.Component {
             <Route exact path="/Categories" component={Categories} />
             <Route exact path="/About" component={About} />
             <Route exact path="/PageNotFound" component={PageNotFound} />
-            <Redirect exact from="./" to = "/Home" component={Home} />
+            <Redirect exact from="./" to="/Home" component={Home} />
             <Redirect to="/PageNotFound" />
           </Switch>
         </Router>
