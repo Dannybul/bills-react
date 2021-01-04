@@ -1,13 +1,16 @@
 import React from "react";
-
+import Bills from "./Bills";
+import Input from "./Input";
+let subject = "water resources development";
 const url =
-  "https://api.propublica.org/congress/v1/116/house/bills/introduced.json";
+  "https://api.propublica.org/congress/v1/bills/subjects/" + subject + ".json";
 
 export default class Categories extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       bills: [],
+      isDisplayed: false,
     };
   }
 
@@ -20,6 +23,8 @@ export default class Categories extends React.Component {
     console.log(this.state.bills);
   }
 
+  changeSubject = () => {};
+
   async callApi(apiUrl) {
     try {
       let response = await fetch(apiUrl, {
@@ -30,7 +35,7 @@ export default class Categories extends React.Component {
       });
       let json = await response.json();
       await console.log(json);
-      let billsResult = await json.results[0].bills;
+      let billsResult = await json.results;
       //Should I validate all data works?
       //Are there security risks
       await this.setState({
@@ -43,11 +48,12 @@ export default class Categories extends React.Component {
     //parse for errors
     //update state with await function
   }
-
   render() {
     return (
       <div>
-        <h3>Categories</h3>
+        <h1>Categories</h1>
+        <Input />
+        <Bills billsArray={this.state.bills} />
       </div>
     );
   }
