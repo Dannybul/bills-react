@@ -5,7 +5,6 @@ const style = {
   align: "left",
 };
 const Bill = (props) => {
-  console.log(props);
   return (
     <li style={style}>
       {props.info.title} {props.info.bill_id}

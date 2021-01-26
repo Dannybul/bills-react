@@ -52,3 +52,9 @@ export const addBill = ({
     };
   }
 };
+
+export const clearBills = () => {
+  return {
+    type: "CLEAR_BILLS",
+  };
+};
