@@ -1,5 +1,10 @@
 import React from "react";
 import Bill from "./Bill";
+import { connect } from "react-redux";
+/*
+  It has access to the store in props and will need to change it once I have the server up
+  Probably won't need own props anymore
+*/
 
 const Bills = (props) => {
   const billsArray = props.billsArray;
@@ -22,4 +27,8 @@ const Bills = (props) => {
   }
 };
 
-export default Bills;
+function mapStateToProps(state, ownProps) {
+  return { state, ownProps };
+}
+
+export default connect(mapStateToProps)(Bills);
